@@ -4,11 +4,11 @@
 /**Header file for our priority queue/heap**/
 #include "heap.h"
 
-int comp(void *item, void *itemTwo){
-	return ((int)item) - ((int)itemTwo);
+int comp(uintptr_t item, uintptr_t itemTwo){
+	return item - itemTwo;
 }
 
-void printArray(int *array, int size){
+void printArray(uintptr_t *array, int size){
 	int i;
 	for(i = 0;i < size;++i){
 		printf("%d ",((int)array[i]));
@@ -20,7 +20,8 @@ void printArray(int *array, int size){
 int main(int argc, char **argv){
 	/*Make an array of 0 .. 9*/
 	Heap *heap;
-	int *array = malloc(sizeof(int) * 10);
+	
+	uintptr_t *array = malloc(sizeof(uintptr_t) * 10);
 	int i;
 
 	for(i = 0;i < 10;++i){

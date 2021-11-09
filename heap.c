@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdint.h>
 #include "heap.h"
 
 /**
@@ -10,8 +11,8 @@ Performs a heap-sink of the item at 'index' into the heap portion of the array, 
   1   2
 3  4 5  6
 **/
-void iterativeSink(void **array, int n, int index, int (*compFunc)(void *, void *)){
-	void *swap;
+void iterativeSink(uintptr_t *array, int n, int index, int (*compFunc)(uintptr_t, uintptr_t)){
+	uintptr_t swap;
 	int left, right, larger;
 
 	/**Index of index's left child is 2*(index + 1) - 1**/
@@ -66,7 +67,7 @@ void iterativeSink(void **array, int n, int index, int (*compFunc)(void *, void 
 *    4              8
 * 5    8    ->   5     4
 */
-void heapify(void **array,int n,int (*compFunc)(void *, void *)){
+void heapify(uintptr_t *array,int n,int (*compFunc)(uintptr_t , uintptr_t )){
 	//Retrieve the index of the first parent.
 	int parent = ((n) >> 1) - 1;
 
@@ -78,7 +79,7 @@ void heapify(void **array,int n,int (*compFunc)(void *, void *)){
 
 /*Creates a heap out of the given array using a comparison function.
 n is the number of elements in the array/heap**/
-Heap *createHeap(void **array, int n, int (*compFunc)(void *,void *)){
+Heap *createHeap(uintptr_t *array, int n, int (*compFunc)(uintptr_t ,uintptr_t )){
 	Heap *heap = malloc(sizeof(Heap));
 	
 	/*Put array into a min heap.*/
@@ -91,6 +92,6 @@ Heap *createHeap(void **array, int n, int (*compFunc)(void *,void *)){
 	return heap;
 }
 
-void *heapRemove(Heap *heap){
+uintptr_t heapRemove(Heap *heap){
 
 }
