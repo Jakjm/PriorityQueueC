@@ -31,5 +31,10 @@ int main(int argc, char **argv){
 	printArray(array,10);
 	heap = createHeap(array,10,comp);
 	printArray(array,10);
+
+	for(i = 0;i < 10;++i){
+		printf("%d ",heapRemove(heap));
+	}
+	putchar('\n');
 	return 0;
 }

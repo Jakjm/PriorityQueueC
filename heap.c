@@ -92,5 +92,26 @@ Heap *createHeap(uintptr_t *array, int n, int (*compFunc)(uintptr_t ,uintptr_t )
 }
 
 uintptr_t heapRemove(Heap *heap){
+	uintptr_t swap;
+	/*As long as the heap is non-empty**/
+	if(heap->size > 0){
+		/*Size of the heap down by 1.*/
+		heap->size--;
 
+		/*Swap the max element with the element at the back of the heap array*/
+		swap = heap->array[0];
+		heap->array[0] = heap->array[heap->size];
+		heap->array[heap->size] = swap;
+
+
+		/*Heap sink the root of the heap*/
+		iterativeSink(heap->array,heap->size,0,heap->compFunc);
+
+		/**The element that was removed is at index 'size'*/
+		return heap->array[heap->size];
+	}
+	else{
+		/**Return null pointer**/
+		return 0;
+	}
 }
