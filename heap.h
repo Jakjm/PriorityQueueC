@@ -7,6 +7,5 @@ typedef struct Heap{
 	/**Function pointer to the comparison function that is used to determine process priority**/
 	int (*compFunc)(void *,void *);
 } Heap;
-Heap *createHeap(void *array, int n, int (*compFunc)(void *,void *));
-void heapify(void *array,int n,int (*compFunc)(void *, void *));
+Heap *createHeap(void **array, int n, int (*compFunc)(void *,void *));
 void *heapRemove(Heap *heap);
