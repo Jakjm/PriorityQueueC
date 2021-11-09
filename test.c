@@ -29,9 +29,13 @@ int main(int argc, char **argv){
 	}
 	
 	printArray(array,10);
+	
+	/*Heapify elements of array according to comparison function*/
 	heap = createHeap(array,10,comp);
+
 	printArray(array,10);
 
+	/**Remove all elements using comparison function*/
 	for(i = 0;i < 10;++i){
 		printf("%d ",heapRemove(heap));
 	}
