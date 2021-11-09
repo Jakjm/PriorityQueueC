@@ -21,7 +21,6 @@ void iterativeSink(uintptr_t *array, int n, int index, int (*compFunc)(uintptr_t
 	/**Index of right child is 2*(index + 1)**/
 	right = index * 2 + 2;
 
-	printf("%d %d %d\n",index,left,right);
 	/*While the node at index has two children*/
 	while(right < n){
 		/**Compare = value of right - value of left.**/
@@ -68,13 +67,13 @@ void iterativeSink(uintptr_t *array, int n, int index, int (*compFunc)(uintptr_t
 * 5    8    ->   5     4
 */
 void heapify(uintptr_t *array,int n,int (*compFunc)(uintptr_t , uintptr_t )){
-	//Retrieve the index of the first parent.
-	int parent = ((n) >> 1) - 1;
+	/**Parent of the last element in the array**/
+	int parent = (n >> 1) - 1;
 
-	//while(parent >= 0){
+	while(parent >= 0){
 		iterativeSink(array,n,parent,compFunc);
 		--parent;
-	//}
+	}
 }
 
 /*Creates a heap out of the given array using a comparison function.
